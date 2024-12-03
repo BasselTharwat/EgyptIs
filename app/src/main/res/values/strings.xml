@@ -1,3 +1,43 @@
 <resources>
     <string name="app_name">EgyptIs</string>
+    <string name="Monument_1_name">Monument 1 name</string>
+    <string name="Monument_1_description">Monument 1 description</string>
+    <string name="Monument_1_location">Monument 1 location</string>
+    <string name="Monument_2_name">Monument 2 name</string>
+    <string name="Monument_2_description">Monument 2 description</string>
+    <string name="Monument_2_location">Monument 2 location</string>
+    <string name="Monument_3_name">Monument 3 name</string>
+    <string name="Monument_3_description">Monument 3 description</string>
+    <string name="Monument_3_location">Monument 3 location</string>
+    <string name="Monument_4_name">Monument 4 name</string>
+    <string name="Monument_4_description">Monument 4 description</string>
+    <string name="Monument_4_location">Monument 4 location</string>
+    <string name="Monument_5_name">Monument 5 name</string>
+    <string name="Monument_5_description">Monument 5 description</string>
+    <string name="Monument_5_location">Monument 5 location</string>
+    <string name="Monument_6_name">Monument 6 name</string>
+    <string name="Monument_6_description">Monument 6 description</string>
+    <string name="Monument_6_location">Monument 6 location</string>
+    <string name="Monument_7_name">Monument 7 name</string>
+    <string name="Monument_7_description">Monument 7 description</string>
+    <string name="Monument_7_location">Monument 7 location</string>
+    <string name="Monument_8_name">Monument 8 name</string>
+    <string name="Monument_8_description">Monument 8 description</string>
+    <string name="Monument_8_location">Monument 8 location</string>
+    <string name="Monument_9_name">Monument 9 name</string>
+    <string name="Monument_9_description">Monument 9 description</string>
+    <string name="Monument_9_location">Monument 9 location</string>
+    <string name="Monument_10_name">Monument 10 name</string>
+    <string name="Monument_10_description">Monument 10 description</string>
+    <string name="Monument_10_location">Monument 10 location</string>
+    <string name="Monument_11_name">Monument 11 name</string>
+    <string name="Monument_11_description">Monument 11 description</string>
+    <string name="Monument_11_location">Monument 11 location</string>
+    <string name="Monument_12_name">Monument 12 name</string>
+    <string name="Monument_12_description">Monument 12 description</string>
+    <string name="Monument_12_location">Monument 12 location</string>
+
+
+
+
 </resources>
