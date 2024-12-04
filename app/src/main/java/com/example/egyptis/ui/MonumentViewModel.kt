@@ -1,9 +1,11 @@
 package com.example.egyptis.ui
 
 import androidx.lifecycle.ViewModel
+import com.example.egyptis.data.local.LocalCategoryDataProvider
 import com.example.egyptis.data.local.LocalMonumentsDataProvider
 import com.example.egyptis.data.model.Monument
 import com.example.egyptis.data.model.MonumentCategory
+import com.example.egyptis.data.model.MonumentCategoryEnum
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -19,8 +21,10 @@ class MonumentViewModel : ViewModel() {
 
     private fun initializeUIState() {
         _uiState.value = MonumentUIState(
+            categories = LocalCategoryDataProvider.allCategories,
             monuments = LocalMonumentsDataProvider.allMonuments,
-            currentMonument = LocalMonumentsDataProvider.allMonuments[0]
+            currentMonument = LocalMonumentsDataProvider.allMonuments[0],
+            currentCategory = LocalCategoryDataProvider.allCategories[0]
         )
     }
 

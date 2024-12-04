@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">EgyptIs</string>
+    <string name="Home_title">Home</string>
+    <string name="Recommendations_title">Recommendations</string>
+    <string name="Details_title">Details</string>
     <string name="Monument_1_name">Monument 1 name</string>
     <string name="Monument_1_description">Monument 1 description</string>
     <string name="Monument_1_location">Monument 1 location</string>

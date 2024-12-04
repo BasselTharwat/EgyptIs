@@ -27,6 +27,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.egyptis.R
+import com.example.egyptis.data.local.LocalCategoryDataProvider
 import com.example.egyptis.data.local.LocalMonumentsDataProvider
 import com.example.egyptis.data.model.Monument
 import com.example.egyptis.ui.theme.EgyptIsTheme
@@ -34,27 +35,28 @@ import com.example.egyptis.ui.theme.EgyptIsTheme
 @Composable
 fun MonumentDetails(
     modifier: Modifier = Modifier,
-    monument: Monument
+    monumentUIState: MonumentUIState
 ){
 
     Column (
         modifier = modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ){
-        @DrawableRes val imageId = monument.image
+        val currentMonument = monumentUIState.currentMonument
+        @DrawableRes val imageId = currentMonument.image
         val image = painterResource(id = imageId)
         Image(
             painter = image,
             contentDescription = null
         )
 
-        @StringRes val nameId = monument.name
+        @StringRes val nameId = currentMonument.name
         Text(text = stringResource(id = nameId),
             textAlign = TextAlign.Center,
             fontSize = 25.sp,
             modifier = Modifier.padding(top = 10.dp))
 
-        @StringRes val descriptionId = monument.description
+        @StringRes val descriptionId = currentMonument.description
         Text(text = stringResource(id = descriptionId))
 
 
@@ -70,7 +72,12 @@ fun MonumentDetails(
 @Preview (showBackground = true, showSystemUi = true)
 @Composable
 fun MonumentDetailsPreview() {
-    MonumentDetails(monument = LocalMonumentsDataProvider.allMonuments[11])
+    MonumentDetails(monumentUIState = MonumentUIState(
+        monuments = LocalMonumentsDataProvider.allMonuments,
+        categories = LocalCategoryDataProvider.allCategories,
+        currentCategory = LocalCategoryDataProvider.allCategories[0],
+        currentMonument = LocalMonumentsDataProvider.allMonuments[6]
+    ))
 }
 
 
