@@ -76,9 +76,9 @@ fun MonumentImage(
         contentDescription = null,
         contentScale = ContentScale.Crop,
         modifier = Modifier
-            .size(dimensionResource(id = R.dimen.image_size))
+            .size(dimensionResource(id = R.dimen.description_image_size))
             .shadow(
-                elevation = dimensionResource(id = R.dimen.image_shadow_elevation),
+                elevation = dimensionResource(id = R.dimen.description_image_shadow_elevation),
                 shape = MaterialTheme.shapes.extraLarge,
                 spotColor = MaterialTheme.colorScheme.inverseSurface
             )

@@ -3,8 +3,13 @@ package com.example.egyptis.ui
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -18,7 +23,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.focus.focusModifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -56,13 +64,12 @@ fun RecommendationList(
 ) {
     LazyColumn (
         modifier = modifier
-            .fillMaxSize()
     ) {
         items(recommendations) { recommendation ->
             RecommendationCard(
                 modifier = modifier
-                    .padding(dimensionResource(id = R.dimen.padding_extra_large))
-                    .fillMaxWidth(),
+                    .padding(dimensionResource(id = R.dimen.padding_small))
+                    .fillMaxSize(),
                 onClick = { onClick(recommendation) },
                 monument = recommendation
             )
@@ -78,16 +85,26 @@ fun RecommendationCard(
     modifier: Modifier = Modifier
 ){
 
-    Row (
-        modifier = modifier
-            .clickable{ onClick() }
+    Box (modifier = modifier
+        .padding(dimensionResource(id = R.dimen.padding_small))
+        .clip(MaterialTheme.shapes.medium)
+        .background(color = MaterialTheme.colorScheme.surfaceDim)
     ){
-        RecommendationImage(monumentImageId = monument.image)
-        RecommendationText(monumentNameId = monument.name,
-            //modifier = modifier.fillMaxWidth()
-    )
+        Row (
+            modifier = modifier
+                .clickable { onClick() }
+                .padding(dimensionResource(id = R.dimen.padding_small)),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Start
 
+
+        ){
+            RecommendationImage(monumentImageId = monument.image)
+            RecommendationText(monumentNameId = monument.name)
+
+        }
     }
+
 
 
 }
@@ -98,8 +115,11 @@ fun RecommendationText(
     @StringRes monumentNameId : Int
 ) {
     Text(text = stringResource(id = monumentNameId),
-        style = MaterialTheme.typography.headlineLarge,
-        textAlign = TextAlign.Center)
+        style = MaterialTheme.typography.titleLarge,
+        textAlign = TextAlign.Left,
+        modifier = modifier
+            .padding(start = dimensionResource(id = R.dimen.padding_extra_large))
+    )
 
 }
 
@@ -114,9 +134,13 @@ fun RecommendationImage(
         contentDescription = null,
         contentScale = ContentScale.Crop,
         modifier = modifier
-            .size(100.dp)
+            .size(dimensionResource(id = R.dimen.recommendation_image_size))
+            .shadow(
+                elevation = dimensionResource(id = R.dimen.recommendation_image_shadow_elevation),
+                shape = CircleShape,
+                spotColor = MaterialTheme.colorScheme.inverseSurface
+            )
             .clip(CircleShape)
-
     )
 
 }
@@ -128,7 +152,7 @@ fun RecommendationsPreview() {
     Recommendations(monumentUIState = MonumentUIState(
         monuments = LocalMonumentsDataProvider.allMonuments,
         categories = LocalCategoryDataProvider.allCategories,
-        currentCategory = LocalCategoryDataProvider.allCategories[0],
+        currentCategory = LocalCategoryDataProvider.allCategories[3],
         currentMonument = LocalMonumentsDataProvider.allMonuments[4]
     ),
         onMonumentClick = {})
