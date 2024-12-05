@@ -34,14 +34,13 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun GreetingPreview() {
     EgyptIsTheme {
         Scaffold(modifier = Modifier) { innerPadding ->
             EgyptIsApp(
                 modifier = Modifier.padding(innerPadding)
-                    .background(color = MaterialTheme.colorScheme.surface)
             )
         }
     }
