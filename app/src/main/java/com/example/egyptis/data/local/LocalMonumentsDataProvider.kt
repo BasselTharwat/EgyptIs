@@ -77,7 +77,7 @@ object LocalMonumentsDataProvider {
             name = R.string.Monument_7_name,
             description = R.string.Monument_7_description,
             location = R.string.Monument_7_location,
-            image = R.drawable.moalaqa
+            image = R.drawable.st_catherine
         ),
         Monument(
             id = 7,
@@ -85,7 +85,7 @@ object LocalMonumentsDataProvider {
             name = R.string.Monument_8_name,
             description = R.string.Monument_8_description,
             location = R.string.Monument_8_location,
-            image = R.drawable.st_catherine
+            image = R.drawable.st_george_church
         ),
         Monument(
             id = 8,
@@ -93,7 +93,7 @@ object LocalMonumentsDataProvider {
             name = R.string.Monument_9_name,
             description = R.string.Monument_9_description,
             location = R.string.Monument_9_location,
-            image = R.drawable.st_george_church
+            image = R.drawable.moalaqa
         ),
         Monument(
             id = 9,
