@@ -5,16 +5,28 @@ import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.focusModifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.egyptis.R
 import com.example.egyptis.data.local.LocalCategoryDataProvider
 import com.example.egyptis.data.local.LocalMonumentsDataProvider
 import com.example.egyptis.data.model.Monument
@@ -42,9 +54,15 @@ fun RecommendationList(
     onClick: (Monument) -> Unit,
     modifier: Modifier
 ) {
-    LazyColumn {
+    LazyColumn (
+        modifier = modifier
+            .fillMaxSize()
+    ) {
         items(recommendations) { recommendation ->
             RecommendationCard(
+                modifier = modifier
+                    .padding(dimensionResource(id = R.dimen.padding_extra_large))
+                    .fillMaxWidth(),
                 onClick = { onClick(recommendation) },
                 monument = recommendation
             )
@@ -65,7 +83,9 @@ fun RecommendationCard(
             .clickable{ onClick() }
     ){
         RecommendationImage(monumentImageId = monument.image)
-        RecommendationText(monumentNameId = monument.name)
+        RecommendationText(monumentNameId = monument.name,
+            //modifier = modifier.fillMaxWidth()
+    )
 
     }
 
@@ -77,7 +97,9 @@ fun RecommendationText(
     modifier: Modifier = Modifier,
     @StringRes monumentNameId : Int
 ) {
-    Text(text = stringResource(id = monumentNameId))
+    Text(text = stringResource(id = monumentNameId),
+        style = MaterialTheme.typography.headlineLarge,
+        textAlign = TextAlign.Center)
 
 }
 
@@ -90,8 +112,11 @@ fun RecommendationImage(
     Image(
         painter = image,
         contentDescription = null,
+        contentScale = ContentScale.Crop,
         modifier = modifier
-            .size(50.dp)
+            .size(100.dp)
+            .clip(CircleShape)
+
     )
 
 }
