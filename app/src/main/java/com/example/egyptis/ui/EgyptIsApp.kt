@@ -56,24 +56,8 @@ fun EgyptIsApp(
                     navController.navigate(EgyptIsScreen.Details.name)
                 })
         }
-
-
-
-
-
-
-
+        composable(route = EgyptIsScreen.Details.name) {
+            MonumentDetails(monumentUIState = monumentUIState)
+        }
     }
-
-
-    Home(monumentUIState = monumentUIState,
-        onCategoryClick = { category ->
-            viewModel.updateCurrentCategory(category)
-        },
-        modifier = modifier)
-
-
-
-
-
 }
