@@ -19,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
@@ -56,7 +57,7 @@ fun EgyptIsAppBar(
             )
                 },
         colors = TopAppBarDefaults.mediumTopAppBarColors(
-            containerColor = MaterialTheme.colorScheme.inverseSurface
+            containerColor = MaterialTheme.colorScheme.onPrimaryContainer
         ),
         modifier = modifier,
         navigationIcon = {
@@ -137,16 +138,21 @@ fun EgyptIsApp(
             }
         } else if (layout == EgyptIsLayout.TWO_PAGED) {
 
-            Row(modifier = Modifier.fillMaxSize()) {
+            Row(modifier = Modifier.fillMaxSize()
+                .padding(innerPadding)) {
                 Home(
                     monumentUIState = monumentUIState,
-                    modifier = modifier.weight(1f)
-                ) {
-                }
+                    onCategoryClick = { category ->
+                        viewModel.updateCurrentCategory(category)
+                        navController.navigate(EgyptIsScreen.Recommendations.name)
+                    },
+                    modifier = modifier.weight(0.25f)
+                )
+
                 NavHost(
                     navController = navController,
                     startDestination = EgyptIsScreen.Recommendations.name,
-                    modifier = Modifier.weight(2f)
+                    modifier = modifier.weight(0.75f)
                 ) {
                     composable(route = EgyptIsScreen.Recommendations.name) {
                         Recommendations(
@@ -163,19 +169,24 @@ fun EgyptIsApp(
                 }
             }
         } else {
-            Row(modifier = Modifier.fillMaxSize()) {
+            Row(modifier = Modifier.fillMaxSize()
+                .padding(innerPadding)) {
                 Home(monumentUIState = monumentUIState,
-                    modifier = modifier.weight(1f)) {
-                }
+                    onCategoryClick = { category ->
+                        viewModel.updateCurrentCategory(category)
+                    },
+                    modifier = modifier.weight(0.25f)
+                )
+
                 Recommendations(
-                    modifier = Modifier.weight(2f),
+                    modifier = modifier.weight(0.5f),
                     monumentUIState = monumentUIState,
                     onMonumentClick = { monument ->
                         viewModel.updateCurrentMonument(monument)
                     }
                 )
                 MonumentDetails(
-                    modifier = Modifier.weight(3f),
+                    modifier = modifier.weight(1f),
                     monumentUIState = monumentUIState
                 )
             }

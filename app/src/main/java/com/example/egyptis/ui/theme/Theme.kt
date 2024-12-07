@@ -256,9 +256,10 @@ val unspecified_scheme = ColorFamily(
 fun EgyptIsTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    //dynamicColor: Boolean = true,
     content: @Composable() () -> Unit
 ) {
+    /*
   val colorScheme = when {
       dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
           val context = LocalContext.current
@@ -268,6 +269,14 @@ fun EgyptIsTheme(
       darkTheme -> darkScheme
       else -> lightScheme
   }
+     */
+
+    val colorScheme = if (darkTheme) {
+        darkScheme
+    } else {
+        lightScheme
+    }
+
 
   MaterialTheme(
     colorScheme = colorScheme,

@@ -45,12 +45,12 @@ fun MonumentDetails(
     ){
         val currentMonument = monumentUIState.currentMonument
 
-        Spacer(modifier = modifier.weight(R.dimen.spacer_small.toFloat()))
+        Spacer(modifier = modifier.weight(0.25f))
 
         @DrawableRes val imageId = currentMonument.image
         MonumentImage(imageId = imageId)
 
-        Spacer(modifier = modifier.weight(R.dimen.spacer_medium.toFloat()))
+        Spacer(modifier = modifier.weight(0.5f))
 
         val nameId = currentMonument.name
         MonumentTitle(titleId = nameId)
@@ -60,7 +60,7 @@ fun MonumentDetails(
         MonumentDescription(descriptionId = descriptionId,
             locationId = locationId)
 
-        Spacer(modifier = modifier.weight(R.dimen.spacer_large.toFloat()))
+        Spacer(modifier = modifier.weight(1.0f))
 
     }
 }
